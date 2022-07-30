@@ -43,7 +43,7 @@ public class ExportAsUrlDialog extends DialogBox {
 	VerticalPanel vp;
 	Button shortButton;
 	static TextArea textArea;
-	String requrl;
+	String query;
 	
 	public boolean shortIsSupported() {
 		return circuitjs1.shortRelaySupported;
@@ -59,7 +59,7 @@ public class ExportAsUrlDialog extends DialogBox {
 	static public void createShort(String urlin) 
 	{
     	String url;
-    	url = "shortrelay.php"+"?v="+urlin; 
+		url = "shortrelay"+urlin;
     	textArea.setText("Waiting for short URL for web service...");
 		RequestBuilder requestBuilder = new RequestBuilder(RequestBuilder.GET, url);
 		try {
@@ -94,9 +94,8 @@ public class ExportAsUrlDialog extends DialogBox {
 	public ExportAsUrlDialog( String dump) {
 		super();
 		String start[] = Location.getHref().split("\\?");
-		String query="?ctz=" + compress(dump);
+		query="?ctz=" + compress(dump);
 		dump = start[0] + query;
-		requrl = URL.encodeQueryString(query);
 		Button okButton, copyButton;
 	
 		Label la1, la2;
@@ -131,7 +130,7 @@ public class ExportAsUrlDialog extends DialogBox {
 			shortButton.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {
 					shortButton.setVisible(false);
-					createShort(requrl);
+					createShort(query);
 				}
 			});
 		}

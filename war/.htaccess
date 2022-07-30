@@ -1,0 +1,5 @@
+DirectoryIndex circuitjs.html index.html
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} ^/(.*)shortrelay$
+RewriteRule ^shortrelay$ https://tinyurl.com/api-create.php?url=https://%{HTTP_HOST}/%1\?%{QUERY_STRING} [NE]
