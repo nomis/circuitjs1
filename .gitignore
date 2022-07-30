@@ -1,3 +1,5 @@
+/target/
+
 #GWT cache
 gwt-unitCache/
 war/circuitjs1/
